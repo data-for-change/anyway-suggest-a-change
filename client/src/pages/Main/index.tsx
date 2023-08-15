@@ -6,6 +6,11 @@ import { Box } from "@mui/material";
 function App() {
   const [cards, setCards] = useState<StreetCardProps[]>([
     { streetName: "בוגרשוב", city: "תל אביב" },
+    { streetName: "בוגרשוב", city: "תל אביב" },
+    { streetName: "בוגרשוב", city: "תל אביב" },
+    { streetName: "בוגרשוב", city: "תל אביב" },
+    { streetName: "בוגרשוב", city: "תל אביב" },
+    { streetName: "בוגרשוב", city: "תל אביב" },
   ]);
 
   return (
@@ -17,17 +22,18 @@ function App() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          height: '85%'
         }}
       >
         <Box
           sx={{
-            height: "fit-content",
-            width: "90%",
+            height: "100%",
             display: "flex",
             flexDirection: "row",
             flexWrap: "wrap",
             marginTop: "24px",
             justifyContent: "center",
+            overflow: "auto",
           }}
         >
           {cards.map((streetData) => (
