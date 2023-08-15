@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -11,8 +11,12 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
+import { routes } from "../../routs/routes";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 
-export default function PrimarySearchAppBar() {
+const Navbar = () => {
+  const Navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
@@ -123,6 +127,17 @@ export default function PrimarySearchAppBar() {
           >
             ANYWAY
           </Typography>
+          <Box sx={{margin: "10px"}}>
+            {routes.map(({ label, path }) => (
+              <Button
+                key={label}
+                sx={{ margin: '5px', height: '100%', color: "white", border: "1px solid black"}}
+                onClick={() => Navigate(path)}
+              >
+                {label}
+              </Button>
+            ))}
+          </Box>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton
@@ -165,3 +180,5 @@ export default function PrimarySearchAppBar() {
     </Box>
   );
 }
+
+export default Navbar;
