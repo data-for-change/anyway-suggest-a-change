@@ -1,0 +1,154 @@
+{
+  "footer": {
+    "about": "About",
+    "acknowledgements": "Acknowledgements",
+    "version": "Version"
+  },
+  "thankYouDialog": {
+    "Acknowledgements": "Acknowledgements",
+    "Developed by": "This project was developed by:",
+    "names": [
+      "Yuval Bar Levi",
+      "Miki Stanger",
+      "Meital Lazarovich",
+      "Atalya Alon",
+      "Eyal Levi",
+      "Carmel Paradis",
+      "Daniel Shely",
+      "Dror Reshef",
+      "Sergey Bekker",
+      "Eyal Shaar",
+      "Yael Luria",
+      "Yogev Boaron Ben-Har",
+      "Tal Licht",
+      "Ron Fybish",
+      "Adele Angel",
+      "Moran Zivoni"
+    ]
+  },
+  "aboutDialog": {
+    "About": "About",
+    "Next challenge": "ANYWAY’s next challenge is to form an automatic generator of infographics to empower and serve journalists, bloggers, public opinion leaders, community leaders etc. in the era of data journalism.",
+    "The generated infographics": "The generated infographics will enhance reporting and news writing with the use of statistics. Each infographic will be created for a real-time road accident related news flash and will provide a deeper insight into the story based on historical data.",
+    "We believe": "This, we believe, will increase both the quantity and quality of articles dealing with road accidents, and will result in raising public awareness and creating pressure on decision makers to initiate infrastructure improvements in light of",
+    "linkText": "Vision Zero.",
+    "linkUrl": "https://en.wikipedia.org/wiki/Vision_Zero"
+  },
+  "filterBar": {
+    "Past Year": "Past Year",
+    "Last 3 Years": "Last 3 Years",
+    "Last 5 Years": "Last 5 Years",
+    "Last 8 Years": "last 8 years",
+    "Show Details": "Show Details",
+    "Hide Details": "Hide Details"
+  },
+  "textView": {
+    "inYear": "In the year",
+    "inYears": "In the years",
+    "on": "on",
+    "onSegment": "Road segment",
+    "occurred": "occurred",
+    "accidents": "accidents",
+    "killedAndHurt": "killed and hurt",
+    "hurt": "hurt",
+    "injured" : "casualties",
+    "fatal": {
+      "singular": "fatal",
+      "plural": "fatal"
+    },
+    "severe": {
+      "singular": "severe",
+      "plural": "severe"
+    },
+    "light": {
+      "singular": "light",
+      "plural": "light"
+    }
+  },
+  "onUrban": {
+    "road": "On urban roads (without intersections)",
+    "location": "throughout the country",
+    "route": "Route"
+  },
+  "cardEditor": {
+    "edit": "Card Editing",
+    "mode": "Display Mode",
+    "display": "Display",
+    "landscape": "Portrait",
+    "portrait": "Landscape",
+    "showAccidents": "Show Accidents",
+    "showInjured": "Show Injured",
+    "size": "Size",
+    "download": "Download as PNG"
+  },
+  "LocationApprove": {
+    "title": "Change/Approve location",
+    "newsFlash": "News flash",
+    "accident": "Location of accident",
+    "changeAllowed": "Can choose location on the map or choose city and ",
+    "updater": "User updating",
+    "status": "Status",
+    "pleaseMark": "please choose",
+    "verifyLocation": "Approve segment",
+    "rejectLocation": "Reject segment",
+    "segment": "Segment",
+    "approveButton": "Approve",
+    "cancelButton": "Cancel"
+  },
+  "labelPosition": "Label Position",
+  "table": {
+    "labels": ["Date", "Hour", "Type", "Killed", "Severe", "Light"]
+  },
+  "login": "LOGIN",
+  "filterPanel": {
+    "all": "all"
+  },
+  "header": {
+    "Search": "Search",
+    "User Greeting": "Hello",
+    "User Info Update": "Update Info",
+    "management": "Management"
+  },
+  "userDetailsForm": {
+    "Update": "Update",
+    "User Details": "User Details",
+    "Last Name": "Last Name",
+    "First Name": "First Name",
+    "Email": "Email",
+    "Organization": "Organization",
+    "Name": "Name"
+  },
+  "usersManagement": {
+    "title": "Users Management",
+    "cancel": "cancel",
+    "save": "save",
+    "saveAll": "save all",
+    "edit": "edit"
+  },
+  "sideBar": "Approximate location:",
+  "changeLocationButton": "Change/Approve location",
+  "UserProfileHeader": {
+    "hello": "Hello",
+    "logout": "LOGOUT"
+  },
+  "widgets": {
+    "countByCarType": {
+      "Accidents count by vehicle type": "Accidents count by vehicle type",
+      "compared to national average": "in a section compared to national average on roads of the same type"
+    },
+    "lastDateUpdated": "last update",
+    "No data": "No data to display"
+  },
+  "mapDialog": {
+    "searchButton": "Search",
+    "cancelButton": "Cancel",
+    "chosenSegment": "Chosen section:",
+    "searchSection": "Search section",
+    "searchStreetAndCity": "Search city/street",
+    "road": "road",
+    "city": "city",
+    "street": "street"
+  },
+  "locationIndicator": "(Chosen Section Search Result)",
+  "cityAndStreetIndicator": "(Chosen City And Street Search Result)"
+}
