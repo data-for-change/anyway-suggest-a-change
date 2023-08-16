@@ -15,14 +15,14 @@ interface IProps {
 
 async function getNames(): Promise<string[]> {
   return new Promise((resolve, reject) => {
-    return Papa.parse(process.env.REACT_APP_THANKYOU_NAMES_FILE || defaultNamesFile, {
+    return Papa.parse(import.meta.env.THANKYOU_NAMES_FILE || defaultNamesFile, {
       download: true,
       encoding: 'utf-8-sig',
       header: true,
-      complete: results => {
+      complete: (results) => {
         resolve(results.data.map((item: any) => item.Name as string));
       },
-      error: reject
+      error: reject,
     });
   });
 }
@@ -37,7 +37,7 @@ const ThankYouDialog: FC<IProps> = ({ isShowing, onClose }) => {
     async function _getNames() {
       try {
         const names = await getNames();
-        setNames(names.filter(name => name !== '').join(', '));
+        setNames(names.filter((name) => name !== '').join(', '));
       } catch (error) {
         throw error;
       }
@@ -56,7 +56,7 @@ const ThankYouDialog: FC<IProps> = ({ isShowing, onClose }) => {
         <Box mb={1}>
           <Typography.Body5>{t('thankYouDialog.Developed by')}</Typography.Body5>
         </Box>
-        {names !== null && <Typography.Body5>{names}</Typography.Body5>} 
+        {names !== null && <Typography.Body5>{names}</Typography.Body5>}
       </article>
     </DialogWithHeader>
   );

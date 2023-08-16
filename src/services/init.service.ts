@@ -21,8 +21,8 @@ function setAxiosDefaults() {
 
 function setLocationMapDefaults() {
   L.Icon.Default.mergeOptions({
-    iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-    iconUrl: require('leaflet/dist/images/marker-icon.png'),
-    shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+    iconRetinaUrl: import('leaflet/dist/images/marker-icon-2x.png'),
+    iconUrl: import('leaflet/dist/images/marker-icon.png'),
+    shadowUrl: import('leaflet/dist/images/marker-shadow.png'),
   });
 }

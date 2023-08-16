@@ -1,9 +1,9 @@
 import React, { Suspense } from 'react';
-import { Box, createStyles, makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core';
+import { Box, createStyles, makeStyles, createTheme, ThemeProvider } from '@material-ui/core';
 import OverlayLoader from '../src/components/molecules/OverlayLoader';
 import { defaultThemeOptions } from '../src/style/theme';
 
-const customTheme = createMuiTheme(defaultThemeOptions);
+const customTheme = createTheme(defaultThemeOptions);
 const useStyles = makeStyles(() =>
   createStyles({
     rtl: {
