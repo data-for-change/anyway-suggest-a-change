@@ -2,9 +2,17 @@ import { useState } from 'react';
 import StreetCard, { StreetCardProps } from 'components/StreetCard';
 import { Box, makeStyles, Theme } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
+import Comments from 'components/Comments';
+import { width } from '@material-ui/system';
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
+    display: 'flex',
+    height: '100%',
+    width: '100%',
+  },
+  cardsWrapper: {
+    width: '80%',
     height: '100%',
     margin: '16px',
     overflow: 'auto',
@@ -31,9 +39,12 @@ function HomePage() {
 
   return (
     <Box className={classes.container}>
-      {cards.map((streetData, index) => (
-        <StreetCard key={index} {...streetData} />
-      ))}
+      <Box className={classes.cardsWrapper}>
+        {cards.map((streetData, index) => (
+          <StreetCard key={index} {...streetData} />
+        ))}
+      </Box>
+      <Comments />
     </Box>
   );
 }
