@@ -15,7 +15,7 @@ interface IProps {
 
 async function getNames(): Promise<string[]> {
   return new Promise((resolve, reject) => {
-    return Papa.parse(import.meta.env.THANKYOU_NAMES_FILE || defaultNamesFile, {
+    return Papa.parse(import.meta.env.VITE_THANKYOU_NAMES_FILE || defaultNamesFile, {
       download: true,
       encoding: 'utf-8-sig',
       header: true,
