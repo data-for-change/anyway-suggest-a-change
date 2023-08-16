@@ -85,3 +85,5 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
 }));
+
+        <Typography variant="h1" component="div" style={{ fontWeight: 'bold' }} />

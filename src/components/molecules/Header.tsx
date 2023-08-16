@@ -14,7 +14,6 @@ import anywayLogo from 'assets/anyway.png';
 import { SignInIcon } from 'components/atoms/SignInIcon';
 import MapDialog from 'components/molecules/MapDialog';
 import { IPoint } from 'models/Point';
-import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles({
   userSection: {
@@ -30,39 +29,12 @@ const reloadHomePage = () => {
 };
 
 const Header: FC = () => {
-  const navigate = useNavigate();
   const { t } = useTranslation();
   const classes = useStyles();
   const store: RootStore = useStore();
   const { userStore, settingsStore } = store;
 
-  const [open, setOpen] = useState(false);
-
   const isUserDetailsRequired: boolean = !userStore.userInfo?.meta.isCompleteRegistration;
-  const roadSegmentLocation = store.gpsLocationData;
-
-  const onLocationChange = useCallback(
-    (location: IPoint) => {
-      store.fetchGpsLocation(location);
-    },
-    [store],
-  );
-
-  const onLocationSearch = () => {
-    if (roadSegmentLocation) {
-      navigate(`${settingsStore.currentLanguageRouteString}/location/${roadSegmentLocation?.road_segment_id}`);
-      setOpen(false);
-      store.setGpsLocationData(null);
-    }
-  };
-
-  const onStreetAndCitySearch = (street?: string, city?: string) => {
-    // change to constant values until backend issues are fixed
-    console.log('city is', city);
-    console.log('street is', street);
-    navigate(`${settingsStore.currentLanguageRouteString}/cityAndStreet/${street}/${city}`);
-    setOpen(false);
-  };
 
   useEffect(() => {
     userStore.getUserLoginDetails();
@@ -99,21 +71,8 @@ const Header: FC = () => {
     <AppBar>
       <Logo src={logo} alt={'Anyway'} height={30} onClick={reloadHomePage} />
       <Box className={classes.userSection}>
-        <Button.Standard onClick={() => setOpen(true)}>{t('header.Search')}</Button.Standard>
         {authElement}
       </Box>
-      <MapDialog
-        open={open}
-        section={roadSegmentLocation?.road_segment_name}
-        roadNumber={roadSegmentLocation?.road1}
-        onLocationChange={onLocationChange}
-        onClose={() => {
-          setOpen(false);
-          store.setGpsLocationData(null);
-        }}
-        onSearch={onLocationSearch}
-        onStreetAndCitySearch={onStreetAndCitySearch}
-      />
     </AppBar>
   );
 };
