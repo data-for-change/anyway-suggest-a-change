@@ -20,6 +20,8 @@ const useStyles = makeStyles({
   userSection: {
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '12%',
   },
 });
 
@@ -85,10 +87,10 @@ const Header: FC = () => {
       );
     } else {
       authElement = (
-        <>
+        <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <LogInLinkGoogle />
           <SignInIcon />
-        </>
+        </Box>
       );
     }
   }
@@ -98,7 +100,6 @@ const Header: FC = () => {
       <Logo src={logo} alt={'Anyway'} height={30} onClick={reloadHomePage} />
       <Box className={classes.userSection}>
         <Button.Standard onClick={() => setOpen(true)}>{t('header.Search')}</Button.Standard>
-        {FEATURE_FLAGS.language && <LanguageMenu />}
         {authElement}
       </Box>
       <MapDialog

@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { oceanBlueColor, skyBlueColor } from 'style';
+import { blackColor, oceanBlueColor, skyBlueColor, smokeWhiteColor, whiteColor } from 'style';
 import React from 'react';
 import { AUTH_LOGIN_GOOGLE_URL } from 'const/generalConst';
 import { openSignInWindow } from 'services/signInWindow';
@@ -7,10 +7,10 @@ import { useTranslation } from 'react-i18next';
 const useStyles = makeStyles((theme) => ({
   userButton: {
     padding: theme.spacing(1),
-    color: `${oceanBlueColor}`,
+    color: `${whiteColor}`,
     textDecoration: 'none',
     '&:hover': {
-      color: `${skyBlueColor}`,
+      color: `${smokeWhiteColor}`,
     },
     cursor: 'pointer',
   },

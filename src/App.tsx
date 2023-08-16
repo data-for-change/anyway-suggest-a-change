@@ -13,14 +13,14 @@ import PopUpRedirect from './components/atoms/PopUpRedirect';
 import WidgetsTemplate from './components/organisms/WidgetsTemplate';
 // main components height - must add up to 100
 
-const headerHeight = '5vh';
+const headerHeight = '6vh';
 const pageContentHeight = '88vh';
-const footerHeight = '7vh';
+const footerHeight = '6vh';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     pageContent: {
-      overflow: 'auto',
+      overflow: 'hidden',
     },
   }),
 );
