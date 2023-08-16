@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@babel/eslint-parser": "^7.14.7",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.61",
@@ -33,6 +34,7 @@
     "react-leaflet": "3.1.0",
     "react-leaflet-google-layer": "^2.0.4",
     "react-router-dom": "^6.15.0",
+    "react-scripts": "^5.0.1",
     "react-share": "^4.4.0",
     "recharts": "^2.0.9",
     "tinycolor2": "^1.4.2",
