@@ -6,6 +6,7 @@ interface IProps {
   onClose: () => any;
   fullWidth?: boolean;
   maxWidth?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | false;
+  children: React.ReactNode;
 }
 
 const Dialog: FC<IProps> = ({ isShowing, onClose, children, fullWidth, maxWidth }) => {

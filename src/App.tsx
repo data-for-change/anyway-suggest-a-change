@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next';
 import { useTheme } from '@material-ui/core/styles';
 import PopUpRedirect from './components/atoms/PopUpRedirect';
 import WidgetsTemplate from './components/organisms/WidgetsTemplate';
+import MapDialog from 'components/molecules/MapDialog';
 // main components height - must add up to 100
 
 const headerHeight = '6vh';

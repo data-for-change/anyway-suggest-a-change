@@ -19,7 +19,11 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const AppBar: FC = ({ children }) => {
+interface AppBarProps {
+  children: React.ReactNode;
+}
+
+const AppBar: FC<AppBarProps> = ({ children }) => {
   const classes = useStyles();
 
   return <MatAppBar className={classes.root}>{children}</MatAppBar>;
