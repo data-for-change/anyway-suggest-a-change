@@ -1,11 +1,11 @@
 import React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core';
-import { blackColor } from 'style';
+import { blackColor, whiteColor } from 'style';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      color: blackColor,
+      color: whiteColor,
       marginRight: '5px',
       cursor: 'default',
       display: 'flex',

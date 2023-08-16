@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginTop: '24px',
+    margin: '16px',
     justifyContent: 'center',
     overflow: 'auto',
   },
