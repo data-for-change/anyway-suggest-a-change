@@ -6,11 +6,7 @@ import { observer } from 'mobx-react-lite';
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
     height: '100%',
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
     margin: '16px',
-    justifyContent: 'center',
     overflow: 'auto',
   },
 }));

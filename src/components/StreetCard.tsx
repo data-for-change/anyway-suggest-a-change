@@ -1,5 +1,15 @@
 import React from 'react';
-import { IconButton, Typography, CardMedia, CardContent, CardActions, Card, SvgIconTypeMap } from '@material-ui/core';
+import {
+  IconButton,
+  Typography,
+  CardMedia,
+  CardContent,
+  CardActions,
+  Card,
+  SvgIconTypeMap,
+  CardHeader,
+  Box,
+} from '@material-ui/core';
 import { ErrorRounded, Chat } from '@material-ui/icons';
 import { OverridableComponent } from '@material-ui/core/OverridableComponent';
 import { Theme } from '@material-ui/core';
@@ -18,54 +28,66 @@ export interface CardIconProps {
 
 const useStyles = makeStyles((theme: Theme) => ({
   cardIconButton: {
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.primary.main,
     '&:hover': {
-      backgroundColor: theme.palette.secondary.light,
+      backgroundColor: theme.palette.primary.light,
     },
+    '& svg': {
+      fontSize: '2rem',
+      color: 'white',
+    },
+    margin: 8,
+    borderRadius: '20%',
   },
   streetCard: {
     height: 'fit-content',
-    width: 345,
+    width: '600px',
     marginRight: '12px',
     marginBottom: '24px',
     position: 'relative',
-    borderRadius: '20px',
+    borderRadius: '16px',
   },
   streetCardActions: {
-    bottom: 50,
-    position: 'absolute',
-    width: '90%',
+    width: '100%',
+    display: 'flex',
     justifyContent: 'flex-end',
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: 10,
+    left: 10,
+  },
+  cardHeader: {
+    '& span': {
+      fontSize: '2vh',
+      fontWeight: 'bold',
+    },
   },
 }));
 
 const CardIcon: React.FC<CardIconProps> = ({ ariaLabel, Icon, className }) => {
   return (
     <IconButton className={className} aria-label={ariaLabel}>
-      <Icon fontSize="medium" />
+      <Icon />
     </IconButton>
   );
 };
 
 const StreetCard: React.FC<StreetCardProps> = ({ streetName, city }) => {
   const classes = useStyles();
+
   return (
     <Card className={classes.streetCard}>
+      <CardHeader className={classes.cardHeader} title={`${city}, ${streetName}`}></CardHeader>
       <CardMedia
         component="img"
         alt="green iguana"
-        height="280"
+        height="340"
         image="https://upload.wikimedia.org/wikipedia/commons/a/a9/Long_and_Loop_Street_map.svg"
       />
-      <CardActions className={classes.streetCardActions}>
-        <CardIcon Icon={ErrorRounded} ariaLabel="report" />
-        <CardIcon Icon={Chat} ariaLabel="comments" />
-      </CardActions>
-      <CardContent>
-        <Typography variant="h5" component="div" style={{ fontWeight: 'bold' }}>
-          {city}, {streetName}
-        </Typography>
-      </CardContent>
+      <Box className={classes.streetCardActions}>
+        <CardIcon className={classes.cardIconButton} Icon={ErrorRounded} ariaLabel="report" />
+        <CardIcon className={classes.cardIconButton} Icon={Chat} ariaLabel="comments" />
+      </Box>
     </Card>
   );
 };
