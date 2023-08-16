@@ -30,8 +30,9 @@
 Learn more about our [Vision](https://github.com/hasadna/anyway-newsflash-infographics/blob/development/docs/Vision.md)
 
 ## Want to help? <a id="help"></a>
-* Found a bug? feel free to open file a [bug report](https://github.com/hasadna/anyway-newsflash-infographics/issues/new?assignees=&labels=bug&template=bug-report.md&title=%5BBug%5D). If you're new to github - see our [How To](https://github.com/hasadna/anyway-newsflash-infographics/blob/dev/docs/HowTo.md) step by step tutorial. You can also contact use on email or slack(see below)
-* Want contribute some code, help with our UI or improve documentation? Excellent! Please follow these steps
+
+- Found a bug? feel free to open file a [bug report](https://github.com/hasadna/anyway-newsflash-infographics/issues/new?assignees=&labels=bug&template=bug-report.md&title=%5BBug%5D). If you're new to github - see our [How To](https://github.com/hasadna/anyway-newsflash-infographics/blob/dev/docs/HowTo.md) step by step tutorial. You can also contact use on email or slack(see below)
+- Want contribute some code, help with our UI or improve documentation? Excellent! Please follow these steps
 
 ### First thing first
 
@@ -77,7 +78,7 @@ Steps:
 1. Set key-value in the following format:
 
 ```
-REACT_APP_GOOGLE_MAP_KEY='THE_API_KEY_HERE'
+GOOGLE_MAP_KEY='THE_API_KEY_HERE'
 ```
 
 3rd Party libraries included: <a id="2nd-party-libraries"></a>
@@ -119,12 +120,14 @@ https://github.com/edmund-dev/react-async-loader/blob/master/example/GoogleMap.j
 
 ### Contribution Guidelines <a id="contribution-guidelines"></a>
 
-##### Code  Guidelines <a id="code-guidelines"></a>
+##### Code Guidelines <a id="code-guidelines"></a>
+
 Can be found in a separate file. Check them out [here](https://github.com/hasadna/anyway-newsflash-infographics/blob/dev/docs/CodeGuidelines.md)
 
 ##### Branch naming <a id="branch-naming"></a>
 
 Branch naming convention is as following
+
 ```
 TYPE-ISSUE_ID-DESCRIPTION
 
@@ -134,6 +137,7 @@ fix-114-newsflash-location-not-accurate
 ```
 
 ##### PR naming <a id="pr-naming"></a>
+
 Pull Request (PR) title convention is as following
 
 ```
@@ -152,7 +156,7 @@ When `TYPE` can be:
 - **fix** - a bug fix
 - **refactor** - code change that neither fixes a bug nor adds a feature
 
-**All PRs must include commit message with the changes description!** 
+**All PRs must include commit message with the changes description!**
 
 Branching system:
 _master_ - used for production <br>
@@ -161,7 +165,7 @@ _dev_ - anything else <br>
 
 ##### Creating a PR <a id="creating-pr"></a>
 
-A standard procedure for working on an issue would be to: 
+A standard procedure for working on an issue would be to:
 
 1. `git pull dev`
 2. Create new branch from `dev` , like: `refactor-137-making-pie-chart-generic-component`
@@ -204,8 +208,10 @@ We use [github actions](https://github.com/marketplace?type=actions) for the fol
 1. [on-push CI](https://github.com/hasadna/anyway-newsflash-infographics/actions?query=workflow%3ACI) - provide per-PR CI testing and a live PR preview (see below)
 1. [deploy-dev](https://github.com/hasadna/anyway-newsflash-infographics/actions?query=workflow%3Adeploy-development): continuous deployment of `dev` branch to Staging Environment - https://anyway-infographics-staging.web.app/
 1. [deploy-master](https://github.com/hasadna/anyway-newsflash-infographics/actions?query=workflow%3Adeploy-development): continuous deployment of master branch to Production Environment:
-* https://anyway-infographics.web.app/
-* https://media.anyway.co.il/
+
+- https://anyway-infographics.web.app/
+- https://media.anyway.co.il/
+
 1. [Deprecated] [deploy-demo](https://github.com/hasadna/anyway-newsflash-infographics/actions?query=workflow%3Adeploy-development): continuous deployment of demo branch to Demo Environment - https://anyway-infographics-demo.web.app/
 
 Live Preview

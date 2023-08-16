@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
-    display: (process.env.REACT_APP_SHOW_META_TAGS === 'true') ? 'block': 'none',
+    display: import.meta.env.SHOW_META_TAGS === 'true' ? 'block' : 'none',
     position: 'absolute',
     top: 0,
     left: 0,
@@ -15,4 +15,4 @@ const MetaTag: FC = ({ children }) => {
   return <div className={styles.root}>{children}</div>;
 };
 
-export default MetaTag
+export default MetaTag;
