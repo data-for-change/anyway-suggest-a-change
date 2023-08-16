@@ -1,0 +1,20 @@
+{
+  "targets": {
+    "anyway-newsflash-infographics": {
+      "hosting": {
+        "dev": [
+          "anyway-infographics-staging"
+        ],
+        "demo": [
+          "anyway-infographics-demo"
+        ],
+        "master": [
+          "anyway-infographics"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "anyway-newsflash-infographics"
+  }
+}
