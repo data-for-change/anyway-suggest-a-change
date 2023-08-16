@@ -1,0 +1,176 @@
+{
+  "footer": {
+    "about": "אודות",
+    "acknowledgements": "תודות",
+    "version": "גרסה"
+  },
+  "thankYouDialog": {
+    "Acknowledgements": "תודות",
+    "Developed by": "את המערכת פיתחו בהתנדבות:",
+    "names": [
+      "יובל בר לוי",
+      "מיקי שטנגר",
+      "מיטל לזרוביץ׳",
+      "דניאל שלי",
+      "סרגי בקר",
+      "יעל לוריא",
+      "דרור רשף",
+      "אדל אנגל",
+      "כרמל פרדיס",
+      "עתליה אלון",
+      "יוגב בוארון בן-הר",
+      "אייל שער",
+      "אייל לוי",
+      "טל ליכט",
+      "רון פייביש",
+      "מורן צבעוני"
+    ]
+  },
+  "aboutDialog": {
+    "About": "אודות",
+    "Next challenge": "האתגר הבא של ANYWAY הוא ליצור גנרטור אוטומטי שישרת ויעצים עיתונאים, בלוגרים, מובילי דעת קהל, מובילי קהילות וכו׳ בעידן עיתונות הדאטה.",
+    "The generated infographics": "האינפוגרפיקות שיווצרו ישתמשו בנתונים סטטיסטיים על מנת להעשיר את הדיווחים והכתבות. כל אינפוגרפיקה תיווצר במיוחד עבור דיווח בזמן אמת על ידיעה הקשורה לתאונת דרכים ותאפשר הבנה עמוקה יותר של הסיפור שתבוסס על נתונים היסטוריים.",
+    "We believe": "אנו מאמינים שבעקבות כך תהיה עליה בכמות וכן באיכות של כתבות המתייחסות לתאונות דרכים וכך תועלה המודעות הציבורית ויווצר לחץ על מקבלי ההחלטות ליזום שיפורים בתשתיות לאור חזון",
+    "linkText": "אפס הרוגים בתאונות דרכים",
+    "linkUrl": "https://ecowiki.org.il/wiki/%D7%97%D7%96%D7%95%D7%9F_%D7%90%D7%A4%D7%A1_%D7%94%D7%A8%D7%95%D7%92%D7%99%D7%9D_%D7%91%D7%AA%D7%90%D7%95%D7%A0%D7%95%D7%AA_%D7%93%D7%A8%D7%9B%D7%99%D7%9D"
+  },
+  "filterBar": {
+    "Past Year": "שנה אחרונה",
+    "Last 3 Years": "3 שנים אחרונות",
+    "Last 5 Years": "5 שנים אחרונות",
+    "Last 8 Years": "8 שנים אחרונות",
+    "Show Details": "הצג פרטים",
+    "Hide Details": "הסתר פרטים"
+  },
+  "textView": {
+    "inYear": "בשנה",
+    "inYears": "בשנים",
+    "on": "ב",
+    "onSegment": "במקטע",
+    "occurred": "התרחשו",
+    "killedAndHurt": "נהרגו ונפצעו",
+    "hurt": "נפצעו",
+    "accidents": "תאונות",
+    "injured": "נפגעים",
+    "fatal": {
+      "singular": "קטלנית",
+      "plural": "קטלניות"
+    },
+    "severe": {
+      "singular": "קשה",
+      "plural": "קשות"
+    },
+    "light": {
+      "singular": "קלה",
+      "plural": "קלות"
+    },
+    "killed": {
+      "singular": "הרוג",
+      "plural": "הרוגים"
+    },
+    "severeInjured": {
+      "singular": "פצוע קשה",
+      "plural": "פצועים קשה"
+    },
+    "lightInjured": {
+      "singular": "פצוע קל",
+      "plural": "פצועים קל"
+    }
+  },
+  "onUrban": {
+    "road": "כבישים בין עירוניים",
+    "location": "בכל הארץ",
+    "route": "כביש"
+  },
+  "cardEditor": {
+    "edit": "עריכת כרטיס",
+    "mode": "מצב תצוגה",
+    "display": "הצג",
+    "landscape": "לרוחב",
+    "portrait": "לאורך",
+    "showAccidents": "הצגת תאונות",
+    "showInjured": "הצגת נפגעים",
+    "size": "גודל",
+    "download": "הורד כתמונה"
+  },
+  "LocationApprove": {
+    "title": "שינוי/אישור מיקום",
+    "newsFlash": "המבזק",
+    "accident": "מיקום התאונה",
+    "changeAllowed": "ניתן לשנות מיקום על המפה או לבחור יישוב ורחוב",
+    "updater": "הגורם המעדכן",
+    "status": "סטטוס",
+    "pleaseMark": "נא לסמן",
+    "verifyLocation": "זיהוי מקטע ודאי",
+    "rejectLocation": "מקטע לא זוהה נכון",
+    "segment": "המקטע",
+    "approveButton": "אישור",
+    "cancelButton": "ביטול"
+  },
+  "labelPosition": "מיקום תווית",
+  "table": {
+    "labels": [
+      "תאריך",
+      "שעה",
+      "סוג תאונה",
+      "הרוג",
+      "קשה",
+      "קל"
+    ]
+  },
+  "login": "התחברות",
+  "filterPanel": {
+    "all": "הכל"
+  },
+  "infografic" :{
+    "transaction":"תמלול אינפוגרפיקה"
+  },
+  "header": {
+    "Search": "חיפוש",
+    "User Greeting": "שלום",
+    "User Info Update": "פרטי משתמש",
+    "management": "ניהול"
+  },
+  "sideBar": "מיקום משוער:",
+  "changeLocationButton": "שינוי/אישור מיקום",
+  "UserProfileHeader": {
+    "hallo": "שלום",
+    "logout": "התנתקות"
+  },
+  "userDetailsForm": {
+    "Update": "עדכן",
+    "UserDetails": "פרטי משתמש",
+    "Last Name": "שם משפחה",
+    "First Name": "שם פרטי",
+    "Email": "דואר אלקטרוני",
+    "Organization": "ארגון",
+    "Name": "שם"
+  },
+  "usersManagement": {
+    "title": "ניהול משתמשים",
+    "cancel": "בטל",
+    "save": "שמור",
+    "saveAll": "שמור שינויים",
+    "edit": "עריכה"
+  },
+  "widgets": {
+    "countByCarType": {
+      "Accidents count by vehicle type": "השוואת אחוז התאונות ע\"פ כלי רכב",
+      "compared to national average": "במקטע לעומת ממוצע ארצי בכבישים מאותו הסוג"
+    },
+    "lastDateUpdated": "עדכון אחרון",
+    "No data": "אין נתונים להצגה"
+  },
+  "mapDialog": {
+    "searchButton": "חיפוש",
+    "cancelButton": "ביטול",
+    "chosenSegment": "המקטע שנבחר:",
+    "searchSection": "חיפוש מקטע",
+    "searchStreetAndCity": "חיפוש רחוב בעיר/יישוב",
+    "road": "כביש",
+    "city": "עיר",
+    "street": "רחוב"
+  },
+  "locationIndicator": "(תוצאות חיפוש מקטע)",
+  "cityAndStreetIndicator": "(תוצאות חיפוש עיר ורחוב)"
+}
