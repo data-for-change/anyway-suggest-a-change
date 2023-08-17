@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   cardHeader: {
     '& span': {
-      fontSize: '4vh',
+      fontSize: '2.5vh',
       fontWeight: 'bold',
     },
     backgroundColor: 'white',
