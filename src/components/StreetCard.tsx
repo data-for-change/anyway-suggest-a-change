@@ -11,7 +11,7 @@ export interface StreetCardProps {
   road?: number;
   road_segment_id?: number;
   road_segment_name?: string;
-  handleClick: () => void;
+  //handleClick?: ({ street, road_segment_name }: StreetCardProps, yishuv_name: string) => void;
 }
 
 export interface CardIconProps {
@@ -28,7 +28,7 @@ const CardIcon: FC<CardIconProps> = ({ ariaLabel, Icon, className }) => {
   );
 };
 
-const StreetCard: FC<StreetCardProps> = ({ street, yishuv_name, road, road_segment_id, road_segment_name, handleClick }) => {
+const StreetCard: FC<StreetCardProps> = ({ street, yishuv_name, road, road_segment_id, road_segment_name }, handleClick) => {
   const classes = useStyles();
   const title = street ? `${yishuv_name}, ${street}` : `כביש ${road}, ${road_segment_name}`;
 

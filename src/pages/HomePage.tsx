@@ -27,8 +27,8 @@ export type Location = {
 };
 
 export type Street = {
-  street: number,
-  street_hebrew: string,
+  street: string,
+street_hebrew: string,
 };
 
 export type Segment = {
@@ -65,7 +65,7 @@ const HomePage = () => {
 
   const [currentLocation, setCurrentLocation] = useState<Location>({ yishuv_name: 'תל אביב -יפו', resolution: Resolution.STREET, street: "בוגרשוב" })
 
-  const handleClickOnCard = ({ street, road_segment_name }: StreetCardProps, yishuv_name: string) => {
+  const handleClickOnCard = ( street?: string, road_segment_name?: string , yishuv_name?: string) => {
     setCurrentLocation(street ? { yishuv_name, resolution: Resolution.STREET, street } : { roadSegmentName: road_segment_name, resolution: Resolution.SUBURBAN_ROAD })
   };
 
@@ -117,7 +117,7 @@ const HomePage = () => {
   const getAll = async () => {
     try {
       const { data } = await axios.get(getStreetCardsUrl(currentLocation));
-      const cards: StreetCardProps[] = data.map((card: Street | Segment) => ({ ...card, yishuv_name: currentLocation.yishuv_name, handleClick:() => handleClickOnCard(card, currentLocation.yishuv_name) }));
+      const cards: StreetCardProps[] = data?.slice(0,10).map((card: Street & Segment) => ({ ...card, yishuv_name: currentLocation.yishuv_name, handleClick:() => handleClickOnCard(card.street, card.road_segment_name, currentLocation.yishuv_name) }));
       setCards([...cards]);
     }
     catch (err) {
@@ -203,12 +203,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     overflow: 'auto',
     direction: 'rtl',
     marginRight: '20px',
-    mainBox: {
-      height: 'inherit',
-    },
-    widgetBox: {
-      height: 'inherit',
-      overflow: 'auto'
-    }
-  }
-));
+  },
+  mainBox: {
+    height: 'inherit',
+  },
+  widgetBox: {
+    height: 'inherit',
+    overflow: 'auto'
+  },
+}));

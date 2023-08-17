@@ -18,6 +18,8 @@ import { IconButton } from '@material-ui/core';
 import { Send as SendIcon } from '@material-ui/icons';
 import RootStore from 'store/root.store';
 import { useStore } from 'store/storeConfig';
+import axios from 'axios';
+import { Resolution } from 'models/WidgetData';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -101,20 +103,15 @@ const Comment = ({ author, text, image }) => (
   </ListItem>
 );
 
-const BASE_COMMENTS_ROUTE = '/api/comments';
+//   if (resolution === Resolution.SUBURBAN_ROAD) {
+//     query.push(`${BASE_COMMENTS_ROUTE}?road_segment_id=${segmentId}`);
+//   }
+//   if (resolution === Resolution.STREET) {
+//     query.push(`${BASE_COMMENTS_ROUTE}?street1_hebrew=${street}&yishuv_name=${city}`);
+//   }
 
-const getCommentsUrl = ({ resolution, segmentId, street, yishuv_name: city }: Location): string => {
-  const query = [];
-
-  if (resolution === Resolution.SUBURBAN_ROAD) {
-    query.push(`${BASE_COMMENTS_ROUTE}?road_segment_id=${segmentId}`);
-  }
-  if (resolution === Resolution.STREET) {
-    query.push(`${BASE_COMMENTS_ROUTE}?street1_hebrew=${street}&yishuv_name=${city}`);
-  }
-
-  return query.join('&');
-};
+//   return query.join('&');
+// };
 
 const Comments = ({ location }: { location: Location }) => {
   const classes = useStyles();
@@ -122,17 +119,21 @@ const Comments = ({ location }: { location: Location }) => {
   const [newComment, setNewComment] = useState('');
   const store: RootStore = useStore();
   const { userStore } = store;
+  const [idSequanse, setIdSequance ] = useState(5);
 
-  useEffect(() => {
-    axios.get(getCommentsUrl(location))
-  }, [])
   const handleCommentChange = (event) => {
     setNewComment(event.target.value);
   };
 
   const handleCommentSubmit = () => {
     if (newComment.trim() !== '') {
-      const newComments = [...comments, { author: userStore?.userInfo?.data.firstName, text: newComment }];
+      const newId = idSequanse + 1;
+      const newComments = [...comments, {id: newId, upVotes: 0, subComments: [],
+        timestamp: (new Date()).toString(),
+        image: 'https://randomuser.me/api/portraits/men/50.jpg',
+        author: userStore?.userInfo?.data.firstName || "mantin", text: newComment
+       }];
+      setIdSequance(newId)
       setComments(newComments);
       setNewComment('');
     }
