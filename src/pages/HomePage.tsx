@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Box, Button, makeStyles, Theme, Typography } from '@material-ui/core';
 import { LocationOn } from '@material-ui/icons';
 import { observer } from 'mobx-react-lite';
+import Comments from 'components/Comments';
+import { width } from '@material-ui/system';
 import MapDialog from 'components/molecules/MapDialog';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -118,6 +120,12 @@ export default observer(HomePage);
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
+    display: 'flex',
+    height: '100%',
+    width: '100%',
+  },
+  cardsWrapper: {
+    width: '80%',
     height: '100%',
     margin: '16px',
     overflow: 'auto',
