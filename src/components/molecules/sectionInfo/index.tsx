@@ -3,13 +3,16 @@ import { Box, Typography, makeStyles } from '@material-ui/core';
 
 import { useFetch } from 'hooks/use-fetch';
 import { Resolution } from 'models/WidgetData';
+import Comments from 'components/Comments';
+import { Location } from 'pages/HomePage'
+
 export interface SectionInfoProps {
-    section: {};
+    location: Location
+    
 }
 
-const SectionInfo:FC<SectionInfoProps> = ({section}) => {
+const SectionInfo:FC<SectionInfoProps> = ({location}) => {
     const classes = useStyles();
-    const { data } = useFetch(`/api/comments/${section}?`);
     
     return (
         <>
@@ -23,8 +26,7 @@ const SectionInfo:FC<SectionInfoProps> = ({section}) => {
                 {/* <InfoGraphics> </InfoGraphics> //TODO */}
             </Box>
             <Box className={classes.commentsContainer}>
-                    Comments
-                {/* <comments> </comments> //TODO */}
+                <Comments location={location} />
             </Box>
         </>
     );
