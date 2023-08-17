@@ -18,7 +18,6 @@ const avatarSize = '40px';
 const useStyles = makeStyles((theme) => ({
   userButton: {
     color: `${oceanBlueColor}`,
-    padding: theme.spacing(1),
     textDecoration: 'none',
     '&:hover': {
       color: `${skyBlueColor}`,
@@ -26,11 +25,11 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer',
   },
   welcomeMsg: {
-    padding: theme.spacing(1),
   },
   avatar: {
     width: avatarSize,
     height: avatarSize,
+    cursor: 'pointer'
   },
 }));
 
@@ -94,12 +93,6 @@ const UserProfileHeader: React.FC<IUserProfileHeader> = ({
           {t('header.management')}
         </Box>
       )}
-      <Box className={classes.userButton} onClick={handleLogout}>
-        {t('UserProfileHeader.logout')}
-      </Box>
-      <Box className={classes.userButton} onClick={() => toggleUserUpdateScreen(true)}>
-        {t('header.User Info Update')}
-      </Box>
       <Box className={classes.welcomeMsg}>
         <Typography.Body2>{`${t('header.User Greeting')} ${defaultFormInput.firstName || ''}`}</Typography.Body2>
       </Box>
@@ -107,8 +100,11 @@ const UserProfileHeader: React.FC<IUserProfileHeader> = ({
         className={classes.avatar}
         alt={defaultFormInput.firstName?.substr(0, 1).toUpperCase()}
         src={userDetails.data.imgUrl}
+        onClick={() => toggleUserUpdateScreen(true)}
       />
-
+      <Box className={classes.userButton} onClick={handleLogout}>
+        {t('UserProfileHeader.logout')}
+      </Box>
       <UserInfoForm
         defaultValues={defaultFormInput}
         isShowing={isDialogOpen}
