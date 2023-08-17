@@ -51,7 +51,7 @@ const useStyles = makeStyles(() => ({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'top',
-        height: '60%',
+        // height: '60%',
     },
     title: {
 

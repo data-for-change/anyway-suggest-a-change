@@ -46,6 +46,10 @@ const HomePage = () => {
   const loading = widgetsStore.widgetBoxLoading;
 
   useEffect(() => {
+    navigate('/cityAndStreet/תל%20אביב%20-יפו/בוגרשוב/')
+  }, [])
+
+  useEffect(() => {
     if (city && street) {
       newsFlashStore.selectNewsFlashByCityAndStreet(city, street);
     }
@@ -55,11 +59,7 @@ const HomePage = () => {
     if (gpsId) {
       newsFlashStore.selectLocationId(parseInt(gpsId));
     }
-  }, [newsId, newsFlashStore, gpsId, city, street]);
-
-  if (!newsId && !gpsId && !street && !city) {
-    return <Navigate to="/" replace />;
-  }
+  }, [newsId, newsFlashStore, gpsId, city, street]);  
 
   const [open, setOpen] = useState(false);
 
@@ -85,6 +85,7 @@ const HomePage = () => {
       setCurrentLocation({ resolution: Resolution.SUBURBAN_ROAD, segmentId: roadSegmentLocation.road_segment_id, roadSegmentName: roadSegmentLocation.road_segment_name })
       setOpen(false);
       store.setGpsLocationData(null);
+      navigate(`/he/location/${roadSegmentLocation.road_segment_id}`)
     }
   };
 
@@ -94,6 +95,7 @@ const HomePage = () => {
     console.log('street is', street);
     setCurrentLocation({ resolution: Resolution.STREET, street, yishuv_name: city })
     setOpen(false);
+    navigate(`/cityAndStreet/${street}/${city}/`)
   };
 
   const getStreetsBySegmentsUrl = '/api/segments';
@@ -185,10 +187,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   rightContainer: {
     height: '100%',
-    width: '50%',
+    width: '75%',
     display: 'flex',
     flexDirection: 'column',
-    'align-items': 'flex-start'
+    'align-items': 'flex-start',
+    overflow: 'hidden auto',
+    direction: 'ltr'
   },
   locationContainer: {
     display: 'flex',
@@ -197,7 +201,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   cardsContainer: {
     overflow: 'auto',
-    direction: 'ltr',
+    direction: 'rtl',
     marginRight: '20px',
     mainBox: {
       height: 'inherit',
@@ -207,4 +211,4 @@ const useStyles = makeStyles((theme: Theme) => ({
       overflow: 'auto'
     }
   }
-}));
+));
