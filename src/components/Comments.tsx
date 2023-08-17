@@ -16,62 +16,13 @@ import {
 import { ThumbUp as ThumbUpIcon, Comment as CommentIcon } from '@material-ui/icons';
 import { IconButton } from '@material-ui/core';
 import { Send as SendIcon } from '@material-ui/icons';
-import axios from 'axios';
-import { Location } from 'pages/HomePage'
-import { Resolution } from 'models/WidgetData';
-// const mockComments = [
-//   {
-//     id: 1,
-//     author: 'יוסי כהן',
-//     text: 'זהו התגובה הראשונה.',
-//     timestamp: '2023-08-16T12:30:00Z',
-//     image: 'https://randomuser.me/api/portraits/men/44.jpg',
-//     upVotes: 31,
-//     subComments: [
-//       {
-//         author: 'רחל לוי',
-//         text: 'פוסט מעולה! תודה ששיתפת.',
-//         timestamp: '2023-08-16T13:15:00Z',
-//         image: 'https://randomuser.me/api/portraits/women/45.jpg',
-//         upVotes: 7,
-//       },
-//     ],
-//   },
-//   {
-//     id: 2,
-//     author: 'רחל לוי',
-//     text: 'פוסט מעולה! תודה ששיתפת.',
-//     timestamp: '2023-08-16T13:15:00Z',
-//     image: 'https://randomuser.me/api/portraits/women/44.jpg',
-//     upVotes: 7,
-//     subComments: [],
-//   },
-//   {
-//     id: 3,
-//     author: 'משה מנטין',
-//     text: 'יש לי שאלה על הנושא.',
-//     timestamp: '2023-08-16T14:00:00Z',
-//     image: 'https://randomuser.me/api/portraits/men/50.jpg',
-//     upVotes: 88,
-//     subComments: [],
-//   },
-//   {
-//     id: 4,
-//     author: 'שרה אטליס',
-//     text: 'צפיה לעוד תוכן כמו זה.',
-//     timestamp: '2023-08-16T15:45:00Z',
-//     image: 'https://randomuser.me/api/portraits/women/20.jpg',
-//     upVotes: 2,
-//     subComments: [],
-//   },
-// ];
 
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: theme.spacing(2),
     padding: theme.spacing(2),
-    width: '30%',
-    overflow: 'auto',
+    width: '100%',
+    overflow: 'auto'
   },
   avatar: {
     marginRight: theme.spacing(2),
@@ -92,7 +43,54 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Comment = ({ author, text, image }: any) => (
+const mockComments = [
+  {
+    id: 1,
+    author: 'יוסי כהן',
+    text: 'זהו התגובה הראשונה.',
+    timestamp: '2023-08-16T12:30:00Z',
+    image: 'https://randomuser.me/api/portraits/men/44.jpg',
+    upVotes: 31,
+    subComments: [
+      {
+        author: 'רחל לוי',
+        text: 'פוסט מעולה! תודה ששיתפת.',
+        timestamp: '2023-08-16T13:15:00Z',
+        image: 'https://randomuser.me/api/portraits/women/45.jpg',
+        upVotes: 7,
+      },
+    ],
+  },
+  {
+    id: 2,
+    author: 'רחל לוי',
+    text: 'פוסט מעולה! תודה ששיתפת.',
+    timestamp: '2023-08-16T13:15:00Z',
+    image: 'https://randomuser.me/api/portraits/women/44.jpg',
+    upVotes: 7,
+    subComments: [],
+  },
+  {
+    id: 3,
+    author: 'משה מנטין',
+    text: 'יש לי שאלה על הנושא.',
+    timestamp: '2023-08-16T14:00:00Z',
+    image: 'https://randomuser.me/api/portraits/men/50.jpg',
+    upVotes: 88,
+    subComments: [],
+  },
+  {
+    id: 4,
+    author: 'שרה אטליס',
+    text: 'צפיה לעוד תוכן כמו זה.',
+    timestamp: '2023-08-16T15:45:00Z',
+    image: 'https://randomuser.me/api/portraits/women/20.jpg',
+    upVotes: 2,
+    subComments: [],
+  },
+];
+
+const Comment = ({ author, text, image }) => (
   <ListItem>
     <ListItemAvatar>
       <Avatar src={image}>{author.substring(0, 1).toUpperCase()}</Avatar>
@@ -101,30 +99,15 @@ const Comment = ({ author, text, image }: any) => (
   </ListItem>
 );
 
-const BASE_COMMENTS_ROUTE = '/api/comments';
-
-const getCommentsUrl = ({ resolution, segmentId, street, city}: Location): string => {
-  const query = [];
-
-  if (resolution === Resolution.SUBURBAN_ROAD) {
-    query.push(`${BASE_COMMENTS_ROUTE}?road_segment_id=${segmentId}`);
-  }
-  if (resolution === Resolution.STREET) {
-    query.push(`${BASE_COMMENTS_ROUTE}?street1_hebrew=${street}&yishuv_name=${city}`);
-  }
-
-  return query.join('&');
-};
-
-const Comments = ({ location }: { location: Location }) => {
+const Comments = () => {
   const classes = useStyles();
-  const [comments, setComments] = useState<any[]>([]);
+  const [comments, setComments] = useState(mockComments);
   const [newComment, setNewComment] = useState('');
 
-
-  useEffect( () => {
-      axios.get(getCommentsUrl(location))
-  }, [])
+  useEffect(() => {
+    // No need for axios call here since you're using mockComments
+    setComments(mockComments);
+  }, []);
 
   const handleCommentChange = (event) => {
     setNewComment(event.target.value);
@@ -139,12 +122,10 @@ const Comments = ({ location }: { location: Location }) => {
   };
 
   const handleKeyPress = (e) => {
-    if (e.keyCode == 13) {
+    if (e.keyCode === 13) {
       handleCommentSubmit();
     }
   };
-
-  
 
   const likeComment = (index) => {
     const tempComments = [...comments];
@@ -210,3 +191,4 @@ const Comments = ({ location }: { location: Location }) => {
 };
 
 export default Comments;
+

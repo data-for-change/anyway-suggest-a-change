@@ -69,6 +69,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: 'relative',
     borderRadius: '16px',
     flexShrink: 0,
+    direction: 'rtl'
   },
   streetCardActions: {
     width: '100%',
