@@ -101,7 +101,22 @@ const Comment = ({ author, text, image }) => (
   </ListItem>
 );
 
-const Comments = () => {
+const BASE_COMMENTS_ROUTE = '/api/comments';
+
+const getCommentsUrl = ({ resolution, segmentId, street, yishuv_name: city }: Location): string => {
+  const query = [];
+
+  if (resolution === Resolution.SUBURBAN_ROAD) {
+    query.push(`${BASE_COMMENTS_ROUTE}?road_segment_id=${segmentId}`);
+  }
+  if (resolution === Resolution.STREET) {
+    query.push(`${BASE_COMMENTS_ROUTE}?street1_hebrew=${street}&yishuv_name=${city}`);
+  }
+
+  return query.join('&');
+};
+
+const Comments = ({ location }: { location: Location }) => {
   const classes = useStyles();
   const [comments, setComments] = useState(mockComments);
   const [newComment, setNewComment] = useState('');
@@ -109,10 +124,8 @@ const Comments = () => {
   const { userStore } = store;
 
   useEffect(() => {
-    // No need for axios call here since you're using mockComments
-    setComments(mockComments);
-  }, []);
-
+    axios.get(getCommentsUrl(location))
+  }, [])
   const handleCommentChange = (event) => {
     setNewComment(event.target.value);
   };
@@ -130,7 +143,7 @@ const Comments = () => {
       handleCommentSubmit();
     }
   };
-
+  
   const likeComment = (index) => {
     const tempComments = [...comments];
     tempComments[index].upVotes++;
