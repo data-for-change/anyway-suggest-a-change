@@ -1,13 +1,12 @@
 import { SxProps } from '@mui/system';
 
 export const container: SxProps = {
-  position: 'relative',
-  width: 0.5,
+  width: 1,
   overflow: 'hidden',
-  maxHeight: 400,
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  height: '100%',
 };
 
 export const slide: SxProps = {
@@ -16,7 +15,7 @@ export const slide: SxProps = {
   justifyContent: 'center',
   opacity: 0.5, 
   transition: 'opacity 2s ease-in-out',
-  transform: 'scale(0.95)', 
+  transform: 'scale(0.95)'
 };
 
 export const activeSlide: SxProps = {

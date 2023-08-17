@@ -5,30 +5,28 @@ import { useFetch } from 'hooks/use-fetch';
 import { Resolution } from 'models/WidgetData';
 import Comments from 'components/Comments';
 import { Location } from 'pages/HomePage'
+import { Outlet } from 'react-router';
 
 export interface SectionInfoProps {
     location: Location
-    
+
 }
 
-const SectionInfo:FC<SectionInfoProps> = ({location}) => {
+const SectionInfo: FC<SectionInfoProps> = ({ location }) => {
     const classes = useStyles();
-    
+
     return (
-        <>
+        <Box flexGrow={5} className={classes.widgetBox} position="relative">
             <Box className={classes.titleContainer}>
                 <Typography className={classes.title} variant={'h4'}>
                     Section Info
                 </Typography>
-            </Box>
-            <Box className={classes.infoGraphicsContainer}>
-                    InfoGraphics
-                {/* <InfoGraphics> </InfoGraphics> //TODO */}
-            </Box>
+            </Box>           
+             <Outlet />
             <Box className={classes.commentsContainer}>
                 <Comments location={location} />
             </Box>
-        </>
+        </Box>
     );
 };
 
@@ -39,8 +37,7 @@ const useStyles = makeStyles(() => ({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
-        alignItems: 'top',
-        height: '10%',
+        alignItems: 'top'
     },
     infoGraphicsContainer: {
         display: 'flex',
@@ -58,5 +55,9 @@ const useStyles = makeStyles(() => ({
     },
     title: {
 
-    }
+    },
+    widgetBox: {
+        height: 'inherit',
+        overflow: 'auto',
+      }
 }));
