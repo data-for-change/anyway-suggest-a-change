@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Box, Button, makeStyles, Theme, Typography } from '@material-ui/core';
+import { LocationOn } from '@material-ui/icons';
 import { observer } from 'mobx-react-lite';
 import MapDialog from 'components/molecules/MapDialog';
 import { useNavigate } from 'react-router-dom';
@@ -11,13 +12,14 @@ import { useStore } from 'store/storeConfig';
 import StreetCard, { StreetCardProps } from 'components/StreetCard';
 import ResponsiveDrawer from 'components/molecules/infoDrawer/Drawer';
 import SectionInfo from 'components/molecules/sectionInfo';
+import { LocationButton } from 'components/atoms/LocationButton';
 
-enum LocationType {
+export enum LocationType {
   cityAndStreet,
   sagment
 }
 
-type Location = {
+export type Location = {
   type: LocationType,
   location: string,
   id?: string
@@ -84,9 +86,7 @@ const HomePage = () => {
   return (
     <Box className={classes.container}>
       <Box className={classes.columnContainer}>
-        <Typography>
-          {currentLocation.location} - <Button onClick={() => setOpen(true)}>שינוי כתובת</Button>
-        </Typography>
+        <LocationButton currentLocation={currentLocation} setOpen={ setOpen }></LocationButton>
         {cards.map((streetData: StreetCardProps, index: number) => (
           <StreetCard key={index} {...streetData} />
         ))}
@@ -129,5 +129,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: '50%',
     display: 'flex',
     flexDirection: 'column',
+  },
+  locationContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
   }
 }));

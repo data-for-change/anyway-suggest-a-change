@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       position: 'relative',
       flexGrow: 1,
-      backgroundColor: '#2081c3',
+      backgroundColor: 'rgb(0, 157, 224)',
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
