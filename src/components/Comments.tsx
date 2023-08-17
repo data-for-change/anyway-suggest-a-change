@@ -122,6 +122,8 @@ const Comments = () => {
     }
   };
 
+  
+
   const likeComment = (index) => {
     const tempComments = [...comments];
     tempComments[index].upVotes++;
