@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { useStore } from 'store/storeConfig';
 import RootStore from 'store/root.store';
 import { observer } from 'mobx-react-lite';
@@ -11,6 +11,7 @@ import { Box } from '@material-ui/core';
 import WidgetWrapper from 'components/molecules/widgets/WidgetWrapper';
 import { useTranslation } from 'react-i18next';
 import { logosSourceMap, OrgLogoData } from 'const/cards.const';
+import CarouselInfographicContainer from 'components/organisms/CarouselInfographicContainer/CarouselInfographicContainer';
 
 const WidgetsTemplate: FC = () => {
   const store: RootStore = useStore();
@@ -56,7 +57,7 @@ const WidgetsTemplate: FC = () => {
 
   const NoDataText = <Typography.Body4>{t('widgets.No data')}</Typography.Body4>;
 
-  return <Grid.Container>{widgetsData && widgetsData.length > 0 ? widgetCards : NoDataText} </Grid.Container>;
+  return <CarouselInfographicContainer>{widgetsData && widgetsData.length > 0 ? widgetCards : NoDataText} </CarouselInfographicContainer>;
 };
 
 export default observer(WidgetsTemplate);
