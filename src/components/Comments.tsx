@@ -16,6 +16,8 @@ import {
 import { ThumbUp as ThumbUpIcon, Comment as CommentIcon } from '@material-ui/icons';
 import { IconButton } from '@material-ui/core';
 import { Send as SendIcon } from '@material-ui/icons';
+import RootStore from 'store/root.store';
+import { useStore } from 'store/storeConfig';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -103,6 +105,8 @@ const Comments = () => {
   const classes = useStyles();
   const [comments, setComments] = useState(mockComments);
   const [newComment, setNewComment] = useState('');
+  const store: RootStore = useStore();
+  const { userStore } = store;
 
   useEffect(() => {
     // No need for axios call here since you're using mockComments
@@ -115,7 +119,7 @@ const Comments = () => {
 
   const handleCommentSubmit = () => {
     if (newComment.trim() !== '') {
-      const newComments = [...comments, { author: 'User', text: newComment }];
+      const newComments = [...comments, { author: userStore?.userInfo?.data.firstName, text: newComment }];
       setComments(newComments);
       setNewComment('');
     }
