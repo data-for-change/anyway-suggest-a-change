@@ -10,6 +10,8 @@ export interface LocationButtonProps {
 
 export const LocationButton: FC<LocationButtonProps> = ({ currentLocation, setOpen }) => {
     const classes = useStyles();
+    const {city, street, roadSegmentName} = currentLocation;
+    
     return (
         <Button className={classes.container} onClick={() => setOpen(true)}>
             <Box className={classes.locationContainer}>
@@ -21,7 +23,7 @@ export const LocationButton: FC<LocationButtonProps> = ({ currentLocation, setOp
                         מציג את
                     </Typography>
                     <Typography className={classes.locationText}>
-                        {currentLocation.location}
+                        {roadSegmentName || `${city}, ${street}`}
                     </Typography>
                 </Box>
                 <Box className={classes.iconContainer}>

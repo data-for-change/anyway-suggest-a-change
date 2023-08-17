@@ -20,7 +20,8 @@ export type Location = {
   resolution: Resolution,
   city?: string,
   street?: string,
-  segmentId?: string
+  segmentId?: number,
+  roadSegmentName?: string
 }
 
 const HomePage = () => {
@@ -64,7 +65,7 @@ const HomePage = () => {
 
   const onLocationSearch = () => {
     if (roadSegmentLocation) {
-      setCurrentLocation({ resolution: Resolution.SUBURBAN_ROAD, segmentId: roadSegmentLocation.road_segment_id.toString() })
+      setCurrentLocation({ resolution: Resolution.SUBURBAN_ROAD, segmentId: roadSegmentLocation.road_segment_id, roadSegmentName: roadSegmentLocation.road_segment_name })
       setOpen(false);
       store.setGpsLocationData(null);
     }
@@ -84,7 +85,7 @@ const HomePage = () => {
         {
           currentLocation && <LocationButton currentLocation={currentLocation} setOpen={setOpen}></LocationButton>
         }
-        <Box className={classes.cardsContainer}>
+        <Box className={classes.rightContainer}>
           {
             cards.map((streetData: StreetCardProps, index: number) => (
               <StreetCard key={index} {...streetData} />
@@ -140,12 +141,21 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     flexDirection: 'column',
   },
+  rightContainer: {
+    height: '100%',
+    width: '50%',
+    display: 'flex',
+    flexDirection: 'column',
+    'align-items': 'flex-start'
+  },
   locationContainer: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
   },
   cardsContainer: {
-    overflow: 'auto'
+    overflow: 'auto',
+    direction: 'ltr',
+    marginRight: '20px'
   }
 }));

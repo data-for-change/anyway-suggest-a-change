@@ -33,7 +33,7 @@ const StreetCard: FC<StreetCardProps> = ({ streetName, city, handleClick }) => {
       <CardMedia
         component="img"
         alt="green iguana"
-        height="340"
+        height="250"
         image="https://upload.wikimedia.org/wikipedia/commons/a/a9/Long_and_Loop_Street_map.svg"
       />
       <Box className={classes.streetCardActions}>
@@ -60,14 +60,15 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: 8,
     borderRadius: '100%',
   },
-  streetCard: {
+  streetCard: { 
     height: 'fit-content',
-    width: '600px',
-    marginRight: '12px',
+    width: '350px',
+    maxHeight: '350px',
+    marginRight: '45px',
     marginBottom: '24px',
     position: 'relative',
     borderRadius: '16px',
-    flexShrink: 0
+    flexShrink: 0,
   },
   streetCardActions: {
     width: '100%',
@@ -77,14 +78,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     position: 'absolute',
     bottom: 30,
     left: 10,
-    borderRadius: '100%'
+    borderRadius: '100%',
   },
   cardHeader: {
     '& span': {
-      fontSize: '5vh',
+      fontSize: '4vh',
       fontWeight: 'bold',
     },
-    backgroundColor: '#ABABAB',
-    color: 'white'
+    backgroundColor: 'white',
+    color: 'black'
   },
 }));
