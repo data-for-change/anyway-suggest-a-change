@@ -5,7 +5,7 @@ import { observer } from 'mobx-react-lite';
 import Comments from 'components/Comments';
 import { width } from '@material-ui/system';
 import MapDialog from 'components/molecules/MapDialog';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { IPoint } from 'models/Point';
 import RootStore from 'store/root.store';
@@ -15,6 +15,7 @@ import StreetCard, { StreetCardProps } from 'components/StreetCard';
 import SectionInfo from 'components/molecules/sectionInfo';
 import { LocationButton } from 'components/atoms/LocationButton';
 import { Resolution } from 'models/WidgetData';
+import { IRouteProps } from 'models/Route';
 
 export type Location = {
   resolution: Resolution,
@@ -26,11 +27,26 @@ export type Location = {
 
 const HomePage = () => {
   const classes = useStyles();
-  const navigate = useNavigate();
-  const { t } = useTranslation();
   const store: RootStore = useStore();
+  const { newsFlashStore, widgetsStore, settingsStore } = store;
+  const { gpsId, newsId, lng, city, street } = useParams<IRouteProps>();
+  const loading = widgetsStore.widgetBoxLoading;
 
-  const { settingsStore } = store;
+  useEffect(() => {
+    if (city && street) {
+      newsFlashStore.selectNewsFlashByCityAndStreet(city, street);
+    }
+    if (newsId) {
+      newsFlashStore.selectNewsFlash(parseInt(newsId));
+    }
+    if (gpsId) {
+      newsFlashStore.selectLocationId(parseInt(gpsId));
+    }
+  }, [newsId, newsFlashStore, gpsId, city, street]);
+
+  if (!newsId && !gpsId && !street && !city) {
+    return <Navigate to="/" replace />;
+  }
 
   const [open, setOpen] = useState(false);
 
@@ -94,7 +110,6 @@ const HomePage = () => {
         </Box>
 
 
-
         <MapDialog
           open={open}
           section={roadSegmentLocation?.road_segment_name}
@@ -109,12 +124,8 @@ const HomePage = () => {
         />
       </Box>
       {
-        currentLocation &&
-        <Box className={classes.columnContainer}>
-          <SectionInfo location={currentLocation} />
-        </Box>
+        currentLocation && <SectionInfo location={currentLocation} />
       }
-
     </Box>
   );
 }
@@ -157,5 +168,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     overflow: 'auto',
     direction: 'ltr',
     marginRight: '20px'
+  mainBox: {
+    height: 'inherit',
+  },
+  widgetBox: {
+    height: 'inherit',
+    overflow: 'auto',
   }
 }));
