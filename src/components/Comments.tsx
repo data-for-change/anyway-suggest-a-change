@@ -103,7 +103,7 @@ const Comment = ({ author, text, image }: any) => (
 
 const BASE_COMMENTS_ROUTE = '/api/comments';
 
-const getCommentsUrl = ({ resolution, segmentId, street, city}: Location): string => {
+const getCommentsUrl = ({ resolution, segmentId, street, yishuv_name: city }: Location): string => {
   const query = [];
 
   if (resolution === Resolution.SUBURBAN_ROAD) {
@@ -122,8 +122,8 @@ const Comments = ({ location }: { location: Location }) => {
   const [newComment, setNewComment] = useState('');
 
 
-  useEffect( () => {
-      axios.get(getCommentsUrl(location))
+  useEffect(() => {
+    axios.get(getCommentsUrl(location))
   }, [])
 
   const handleCommentChange = (event) => {
@@ -144,7 +144,7 @@ const Comments = ({ location }: { location: Location }) => {
     }
   };
 
-  
+
 
   const likeComment = (index) => {
     const tempComments = [...comments];

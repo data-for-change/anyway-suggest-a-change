@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Box, Button, makeStyles, Theme, Typography } from '@material-ui/core';
+import axios from 'axios';
 import { LocationOn } from '@material-ui/icons';
 import { observer } from 'mobx-react-lite';
 import Comments from 'components/Comments';
@@ -19,15 +20,27 @@ import { IRouteProps } from 'models/Route';
 
 export type Location = {
   resolution: Resolution,
-  city?: string,
+  yishuv_name?: string,
   street?: string,
   segmentId?: number,
   roadSegmentName?: string
+};
+
+export type Street = {
+  street: number,
+  street_hebrew: string,
+};
+
+export type Segment = {
+  road?: number;
+  road_segment_id?: number;
+  road_segment_name?: string;
 }
 
 const HomePage = () => {
   const classes = useStyles();
   const store: RootStore = useStore();
+  const navigate = useNavigate();
   const { newsFlashStore, widgetsStore, settingsStore } = store;
   const { gpsId, newsId, lng, city, street } = useParams<IRouteProps>();
   const loading = widgetsStore.widgetBoxLoading;
@@ -50,25 +63,13 @@ const HomePage = () => {
 
   const [open, setOpen] = useState(false);
 
-  const [currentLocation, setCurrentLocation] = useState<Location>({ city: 'תל אביב', resolution: Resolution.STREET, street: "בוגרשוב" })
+  const [currentLocation, setCurrentLocation] = useState<Location>({ yishuv_name: 'תל אביב -יפו', resolution: Resolution.STREET, street: "בוגרשוב" })
 
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
-  const handleDrawerToggle = () => {
-    setIsDrawerOpen(!isDrawerOpen);
+  const handleClickOnCard = ({ street, road_segment_name }: StreetCardProps, yishuv_name: string) => {
+    setCurrentLocation(street ? { yishuv_name, resolution: Resolution.STREET, street } : { roadSegmentName: road_segment_name, resolution: Resolution.SUBURBAN_ROAD })
   };
 
-  const [cards, setCards] = useState<StreetCardProps[]>([
-    { streetName: 'בוגרשוב', city: 'תל אביב', handleClick: handleDrawerToggle },
-    { streetName: 'בוגרשוב', city: 'תל אביב', handleClick: handleDrawerToggle },
-    { streetName: 'בוגרשוב', city: 'תל אביב', handleClick: handleDrawerToggle },
-    { streetName: 'בוגרשוב', city: 'תל אביב', handleClick: handleDrawerToggle },
-    { streetName: 'בוגרשוב', city: 'תל אביב', handleClick: handleDrawerToggle },
-    { streetName: 'בוגרשוב', city: 'תל אביב', handleClick: handleDrawerToggle },
-    { streetName: 'בוגרשוב', city: 'תל אביב', handleClick: handleDrawerToggle },
-    { streetName: 'בוגרשוב', city: 'תל אביב', handleClick: handleDrawerToggle },
-    { streetName: 'בוגרשוב', city: 'תל אביב', handleClick: handleDrawerToggle },
-  ]);
+  const [cards, setCards] = useState<StreetCardProps[]>([]);
 
   const roadSegmentLocation = store.gpsLocationData;
 
@@ -91,9 +92,41 @@ const HomePage = () => {
     // change to constant values until backend issues are fixed
     console.log('city is', city);
     console.log('street is', street);
-    setCurrentLocation({ resolution: Resolution.STREET, street, city })
+    setCurrentLocation({ resolution: Resolution.STREET, street, yishuv_name: city })
     setOpen(false);
   };
+
+  const getStreetsBySegmentsUrl = '/api/segments';
+  const getStreetsByCityUrl = '/api/streets-by-yishuv';
+
+  const getStreetCardsUrl = ({ resolution, segmentId, yishuv_name }: Location): string => {
+    const query = [];
+
+    if (resolution === Resolution.SUBURBAN_ROAD) {
+      query.push(`${getStreetsBySegmentsUrl}?road_segment_id=${segmentId}`);
+    }
+    if (resolution === Resolution.STREET) {
+      query.push(`${getStreetsByCityUrl}?yishuv_name=${yishuv_name}`);
+    }
+
+    return query.join('&');
+  };
+
+  const getAll = async () => {
+    try {
+      const { data } = await axios.get(getStreetCardsUrl(currentLocation));
+      const cards: StreetCardProps[] = data.map((card: Street | Segment) => ({ ...card, yishuv_name: currentLocation.yishuv_name, handleClick:() => handleClickOnCard(card, currentLocation.yishuv_name) }));
+      setCards([...cards]);
+    }
+    catch (err) {
+      console.log(err);
+    };
+  }
+
+  useEffect(() => {
+    getAll();
+    currentLocation?.street ? navigate(`/cityAndStreet/${currentLocation?.yishuv_name}/${currentLocation?.street}/`) : navigate(`/he/location/${currentLocation?.segmentId}`);
+  }, [currentLocation]);
 
   return (
     <Box className={classes.container}>
@@ -108,8 +141,6 @@ const HomePage = () => {
             ))
           }
         </Box>
-
-
         <MapDialog
           open={open}
           section={roadSegmentLocation?.road_segment_name}
@@ -168,12 +199,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     overflow: 'auto',
     direction: 'ltr',
     marginRight: '20px',
-  mainBox: {
-    height: 'inherit',
-  },
-  widgetBox: {
-    height: 'inherit',
-    overflow: 'auto'
+    mainBox: {
+      height: 'inherit',
+    },
+    widgetBox: {
+      height: 'inherit',
+      overflow: 'auto'
     }
   }
 }));

@@ -19,10 +19,10 @@ const SectionInfo: FC<SectionInfoProps> = ({ location }) => {
         <Box flexGrow={5} className={classes.widgetBox} position="relative">
             <Box className={classes.titleContainer}>
                 <Typography className={classes.title} variant={'h4'}>
-                    Section Info
+                    {location?.street || location?.roadSegmentName}
                 </Typography>
-            </Box>           
-             <Outlet />
+            </Box>
+            <Outlet />
             <Box className={classes.commentsContainer}>
                 <Comments location={location} />
             </Box>
@@ -59,5 +59,5 @@ const useStyles = makeStyles(() => ({
     widgetBox: {
         height: 'inherit',
         overflow: 'auto',
-      }
+    }
 }));
