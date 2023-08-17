@@ -167,12 +167,13 @@ const useStyles = makeStyles((theme: Theme) => ({
   cardsContainer: {
     overflow: 'auto',
     direction: 'ltr',
-    marginRight: '20px'
+    marginRight: '20px',
   mainBox: {
     height: 'inherit',
   },
   widgetBox: {
     height: 'inherit',
-    overflow: 'auto',
+    overflow: 'auto'
+    }
   }
 }));
