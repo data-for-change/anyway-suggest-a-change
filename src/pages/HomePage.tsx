@@ -34,6 +34,10 @@ const HomePage = () => {
   const loading = widgetsStore.widgetBoxLoading;
 
   useEffect(() => {
+    navigate('/cityAndStreet/תל%20אביב%20-יפו/בוגרשוב/')
+  }, [])
+
+  useEffect(() => {
     if (city && street) {
       newsFlashStore.selectNewsFlashByCityAndStreet(city, street);
     }
@@ -108,7 +112,6 @@ const HomePage = () => {
           }
         </Box>
 
-
         <MapDialog
           open={open}
           section={roadSegmentLocation?.road_segment_name}
@@ -153,10 +156,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   rightContainer: {
     height: '100%',
-    width: '50%',
+    width: '75%',
     display: 'flex',
     flexDirection: 'column',
-    'align-items': 'flex-start'
+    'align-items': 'flex-start',
+    overflow: 'hidden auto',
+    direction: 'ltr'
   },
   locationContainer: {
     display: 'flex',
@@ -165,8 +170,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   cardsContainer: {
     overflow: 'auto',
-    direction: 'ltr',
+    direction: 'rtl',
     marginRight: '20px',
+  },
   mainBox: {
     height: 'inherit',
   },
@@ -175,4 +181,4 @@ const useStyles = makeStyles((theme: Theme) => ({
     overflow: 'auto'
     }
   }
-}));
+));
