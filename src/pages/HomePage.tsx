@@ -28,6 +28,7 @@ export type Location = {
 const HomePage = () => {
   const classes = useStyles();
   const store: RootStore = useStore();
+  const navigate = useNavigate();
   const { newsFlashStore, widgetsStore, settingsStore } = store;
   const { gpsId, newsId, lng, city, street } = useParams<IRouteProps>();
   const loading = widgetsStore.widgetBoxLoading;
@@ -42,11 +43,7 @@ const HomePage = () => {
     if (gpsId) {
       newsFlashStore.selectLocationId(parseInt(gpsId));
     }
-  }, [newsId, newsFlashStore, gpsId, city, street]);
-
-  if (!newsId && !gpsId && !street && !city) {
-    return <Navigate to="/" replace />;
-  }
+  }, [newsId, newsFlashStore, gpsId, city, street]);  
 
   const [open, setOpen] = useState(false);
 
@@ -84,6 +81,7 @@ const HomePage = () => {
       setCurrentLocation({ resolution: Resolution.SUBURBAN_ROAD, segmentId: roadSegmentLocation.road_segment_id, roadSegmentName: roadSegmentLocation.road_segment_name })
       setOpen(false);
       store.setGpsLocationData(null);
+      navigate(`/he/location/${roadSegmentLocation.road_segment_id}`)
     }
   };
 
@@ -93,6 +91,7 @@ const HomePage = () => {
     console.log('street is', street);
     setCurrentLocation({ resolution: Resolution.STREET, street, city })
     setOpen(false);
+    navigate(`/cityAndStreet/${street}/${city}/`)
   };
 
   return (
