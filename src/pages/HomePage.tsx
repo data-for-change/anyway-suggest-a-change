@@ -80,17 +80,19 @@ const HomePage = () => {
 
   return (
     <Box className={classes.container}>
-
       <Box className={classes.columnContainer}>
         {
           currentLocation && <LocationButton currentLocation={currentLocation} setOpen={setOpen}></LocationButton>
         }
+        <Box className={classes.cardsContainer}>
+          {
+            cards.map((streetData: StreetCardProps, index: number) => (
+              <StreetCard key={index} {...streetData} />
+            ))
+          }
+        </Box>
 
-        {
-          cards.map((streetData: StreetCardProps, index: number) => (
-            <StreetCard key={index} {...streetData} />
-          ))
-        }
+
 
         <MapDialog
           open={open}
@@ -142,5 +144,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  cardsContainer: {
+    overflow: 'auto'
   }
 }));

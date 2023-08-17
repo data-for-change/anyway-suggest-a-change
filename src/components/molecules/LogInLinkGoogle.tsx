@@ -6,6 +6,7 @@ import { openSignInWindow } from 'services/signInWindow';
 import { useTranslation } from 'react-i18next';
 const useStyles = makeStyles((theme) => ({
   userButton: {
+    fontFamily: 'Rubik,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;',
     padding: theme.spacing(1),
     color: `${whiteColor}`,
     textDecoration: 'none',
