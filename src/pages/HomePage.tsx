@@ -57,7 +57,7 @@ const HomePage = () => {
 
   const handleDrawerToggle = () => {
     setIsDrawerOpen(!isDrawerOpen);
-  };
+  }; ``
 
   const [cards, setCards] = useState<StreetCardProps[]>([
     { streetName: 'בוגרשוב', city: 'תל אביב', handleClick: handleDrawerToggle },
@@ -100,6 +100,7 @@ const HomePage = () => {
 
   return (
     <Box className={classes.container}>
+
       <Box className={classes.columnContainer}>
         {
           currentLocation && <LocationButton currentLocation={currentLocation} setOpen={setOpen}></LocationButton>
